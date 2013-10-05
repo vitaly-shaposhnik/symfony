@@ -1,0 +1,4 @@
+not_acme_test:
+    resource: "@NotAcmeTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
