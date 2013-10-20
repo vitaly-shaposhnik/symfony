@@ -1,0 +1,4 @@
+vit_guest_book:
+    resource: "@VitGuestBookBundle/Resources/config/routing.yml"
+    prefix:   /
+
