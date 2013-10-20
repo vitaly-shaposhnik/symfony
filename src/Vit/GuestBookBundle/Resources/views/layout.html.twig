@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Гостевая книга</title>
+
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <!-- Latest compiled and minified JavaScript -->
+
+        <script src="{{ asset('bundles/guestbook/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+        <link href="{{ asset('bundles/guestbook/css/style.css') }}" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body>
+        <div id="main">
+            <h1>Гостевая книга</h1>
+
+            {#<?php#}
+                    {#use \Comment\Comment;#}
+                    {#if (!empty($_POST['message'])) {#}
+                        {#$comment = new Comment($_POST['message']);#}
+                        {#print '<div class="alert alert-success"> <a class="close" data-dismiss="alert" href="#">x</a>' . $comment->save() . '</div>';#}
+            {#unset($_POST);#}
+            {#}?>#}
+
+            {% block add_comment %}{% endblock add_comment %}
+
+            {% block comments %}{% endblock comments %}
+        </div>
+    </body>
+
+</html>
+

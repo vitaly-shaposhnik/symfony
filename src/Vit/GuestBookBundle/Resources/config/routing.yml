@@ -1,3 +1,7 @@
 vit_guest_book_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: VitGuestBookBundle:Default:index }
+
+vit_guest_book_add_comment:
+    pattern:  /add
+    defaults: { _controller: VitGuestBookBundle:Default:new }
