@@ -10,22 +10,18 @@ use Vit\GuestBookBundle\Commenter;
 
 class DefaultController extends Controller
 {
-
     /**
      * @Template()
+     * @return array
      */
     public function indexAction()
     {
-        $comments = $this
-            ->getDoctrine()
-            ->getRepository('VitGuestBookBundle:Comment')
-            ->findAll()
-        ;
-
-        return ['comments' => $comments];
+        return ['comments' => $this->getAllComments()];
     }
 
-
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function newAction()
     {
         $request = $this->getRequest();
@@ -39,12 +35,18 @@ class DefaultController extends Controller
             return $this->redirect($this->generateUrl('vit_guest_book_homepage'));
         }
 
-        $comments = $this
+        return $this->render('VitGuestBookBundle:Default:index.html.twig', ['comments' => $this->getAllComments()]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllComments()
+    {
+        return $this
             ->getDoctrine()
             ->getRepository('VitGuestBookBundle:Comment')
             ->findAll()
         ;
-
-        return $this->render('VitGuestBookBundle:Default:index.html.twig', ['comments' => $comments]);
     }
 }

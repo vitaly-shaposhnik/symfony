@@ -30,7 +30,7 @@ class Commenter {
      */
     public function setMessage($message)
     {
-        $this->message = $message;
+        $this->message = trim($message);
     }
 
     /**
@@ -51,6 +51,10 @@ class Commenter {
 
     public function saveComment()
     {
+        if (empty($this->message)) {
+            throw new Exception('Поле "Комментарий" не заполнено');
+        }
+
         $this->comment->setBody($this->message);
         $this->comment->setDate($this->datetime);
 
