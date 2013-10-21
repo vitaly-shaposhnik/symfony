@@ -1,0 +1,26 @@
+{% extends "VitGuestBookBundle::layout.html.twig" %}
+
+
+{% block add_comment %}
+    {% include "VitGuestBookBundle:Default:comment_form.html.twig" %}
+{% endblock add_comment %}
+
+{% block comments %}
+    <div>
+        <h3>Все комментарии</h3>
+        <div class="well">
+
+            {% if comments %}
+                {% for comment in comments %}
+                    <div class="comment-item well">
+                        <div class="comment-date">{{ comment.date|date('Y-m-d H:i:s') }}</div>
+                        <div class="comment-content">{{ comment.body }}</div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                Нет комментариев
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock comments %}
