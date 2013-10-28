@@ -3,8 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+
+
+
     <services>
-        <service id="commenter" class="Vit\GuestBbookBundle\Commenter"></service>
+        <service id="comment" class="Vit\GuestBookBundle\Entity\Comment"></service>
+        <!--<service id="doctrine_manager" class="\Doctrine\Common\Persistence\ManagerRegistry"></service>-->
+
+
+        <service id="commenter" class="Vit\GuestBookBundle\Commenter">
+            <argument type="service" id="comment" />
+            <!--<argument type="service" id="doctrine_manager" />-->
+        </service>
     </services>
 
 </container>

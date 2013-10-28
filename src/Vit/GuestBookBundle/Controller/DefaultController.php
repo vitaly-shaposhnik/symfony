@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Vit\GuestBookBundle\Entity\Comment;
+use Vit\GuestBookBundle\Entity\CommentRepository;
 use Vit\GuestBookBundle\Commenter;
 
 class DefaultController extends Controller
@@ -16,37 +17,26 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return ['comments' => $this->getAllComments()];
+        return ['comments' => CommentRepository::getAllComments()];
     }
 
     /**
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function newAction()
+    public function createAction()
     {
         $request = $this->getRequest();
 
         if ('POST' === $request->getMethod()) {
-            $commenter = new Commenter(new Comment(), $this->getDoctrine()->getManager());
+            $commenter = $this->get('commenter');
+            $commenter->setDoctrineManager($this->getDoctrine()->getManager());
             $commenter->setMessage($request->get('message'));
-            $commenter->setDatetime(new \DateTime());
             $commenter->saveComment();
-
-            return $this->redirect($this->generateUrl('vit_guest_book_homepage'));
+            $this->getDoctrine()->getManager()->flush();
         }
 
-        return $this->render('VitGuestBookBundle:Default:index.html.twig', ['comments' => $this->getAllComments()]);
+        return $this->redirect($this->generateUrl('vit_guest_book_homepage'));
     }
 
-    /**
-     * @return array
-     */
-    public function getAllComments()
-    {
-        return $this
-            ->getDoctrine()
-            ->getRepository('VitGuestBookBundle:Comment')
-            ->findAll()
-        ;
-    }
+
 }
