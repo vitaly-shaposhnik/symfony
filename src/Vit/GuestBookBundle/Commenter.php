@@ -61,4 +61,10 @@ class Commenter {
         $this->doctrineManager->persist($this->comment);
         $this->doctrineManager->flush();
     }
+
+
+    public function add($a, $b)
+    {
+        return $a + $b;
+    }
 }
