@@ -10,7 +10,7 @@
 namespace Vit\GuestBookBundle\Tests;
 
 
-class CommenterTest extends PHPUnit_Framework_TestCase
+class CommenterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider provider
