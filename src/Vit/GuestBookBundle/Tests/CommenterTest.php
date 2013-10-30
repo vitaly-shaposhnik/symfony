@@ -45,13 +45,12 @@ class CommenterTest extends \PHPUnit_Framework_TestCase
      */
     public function testAdd($data, $result)
     {
-        $calcMock = $this->getMockBuilder('\Vit\GuestBookBundle\Commenter')
+        $calcMock = $this->getMockBuilder('Vit\GuestBookBundle\Commenter')
             ->disableOriginalConstructor()
             ->setMethods(null)
             ->getMock()
         ;
 
         $this->assertEquals($result, $calcMock->add($data[0], $data[1]));
-//        $this->assertEquals($result, ($data[0]+$data[1]));
     }
 }
