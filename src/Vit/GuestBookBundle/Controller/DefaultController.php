@@ -28,7 +28,7 @@ class DefaultController extends Controller
         $request = $this->getRequest();
 
         if ('POST' === $request->getMethod()) {
-            $commenter = $this->get('commenter');
+            $commenter = $this->get('vit.guest_book.commenter');
             $commenter->setDoctrineManager($this->getDoctrine()->getManager());
             $commenter->setMessage($request->get('message'));
             $commenter->saveComment();
@@ -37,6 +37,4 @@ class DefaultController extends Controller
 
         return $this->redirect($this->generateUrl('vit_guest_book_homepage'));
     }
-
-
 }

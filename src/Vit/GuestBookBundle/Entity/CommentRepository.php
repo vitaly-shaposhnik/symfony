@@ -24,4 +24,9 @@ class CommentRepository extends EntityRepository
             ->findAll()
             ;
     }
+
+    public function getRepository()
+    {
+        return $this->getDoctrine()->getManager();
+    }
 }

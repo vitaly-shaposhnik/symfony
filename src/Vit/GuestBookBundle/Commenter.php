@@ -55,4 +55,10 @@ class Commenter {
 
         $this->doctrineManager->persist($this->comment);
     }
+
+
+    public function add($a, $b)
+    {
+        return $a + $b;
+    }
 }
