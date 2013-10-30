@@ -8,18 +8,15 @@
 
     <services>
         <service id="vit.guest_book.comment" class="Vit\GuestBookBundle\Entity\Comment"></service>
-        <!--<service id="doctrine_manager" class="\Doctrine\Common\Persistence\ManagerRegistry"></service>-->
-
         <!--<service id="vit.guest_book.repository"-->
                  <!--class="Vit\GuestBookBundle\Entity\CommentRepository"-->
                  <!--factory-service="doctrine.orm.entity_manager"-->
                  <!--factory-method="getRepository">-->
-            <!--<argument>ExampleFooBundle:Foo</argument>-->
+            <!--&lt;!&ndash;<argument>ExampleFooBundle:Foo</argument>&ndash;&gt;-->
         <!--</service>-->
 
         <service id="vit.guest_book.commenter" class="Vit\GuestBookBundle\Commenter">
             <argument type="service" id="vit.guest_book.comment" />
-            <!--<argument type="service" id="doctrine_manager" />-->
             <!--<argument type="service" id="vit.guest_book.repository" />-->
         </service>
     </services>
